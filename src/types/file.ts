@@ -1,3 +1,4 @@
 export interface File {
-  fileName: string;
+  name: string;
+  data: string;
 }

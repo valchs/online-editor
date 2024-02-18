@@ -1,15 +1,22 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { getFilesAction } from 'features/files/actions';
+import {
+  getFilesAction,
+  getFileByNameAction,
+  setSelectedFileDataAction,
+  resetSelectedFileAction,
+} from 'features/files/actions';
 import { File } from 'types/file';
 
 interface FilesState {
   files: File[];
   isLoading: boolean;
+  selectedFile?: File;
 }
 
 const initialState: FilesState = {
   files: [],
   isLoading: false,
+  selectedFile: undefined,
 };
 
 const filesSlice = createSlice({
@@ -30,6 +37,28 @@ const filesSlice = createSlice({
     builder.addCase(getFilesAction.rejected, state => {
       state.isLoading = false;
       state.files = [];
+    });
+    builder.addCase(getFileByNameAction.pending, state => {
+      state.isLoading = true;
+    });
+    builder.addCase(
+      getFileByNameAction.fulfilled,
+      (state, action: PayloadAction<File>) => {
+        state.isLoading = false;
+        state.selectedFile = action.payload;
+      }
+    );
+    builder.addCase(getFileByNameAction.rejected, state => {
+      state.isLoading = false;
+      state.selectedFile = undefined;
+    });
+    builder.addCase(setSelectedFileDataAction, (state, action) => {
+      if (state.selectedFile) {
+        state.selectedFile.data = action.payload.data;
+      }
+    });
+    builder.addCase(resetSelectedFileAction, state => {
+      state.selectedFile = undefined;
     });
   },
 });
