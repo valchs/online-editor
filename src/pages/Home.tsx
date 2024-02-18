@@ -1,4 +1,4 @@
-import Files from 'features/files/components/Files';
+import Editor from 'features/files/components/Editor';
 import React from 'react';
 
 const HomePage: React.FC = () => {
@@ -7,7 +7,7 @@ const HomePage: React.FC = () => {
       <div style={{ textAlign: 'center', margin: '30px' }}>
         <h2>JSON Editor</h2>
       </div>
-      <Files />
+      <Editor />
     </>
   );
 };

@@ -8,8 +8,9 @@ import {
 } from '@microsoft/signalr';
 import useSetSelectedFileData from 'features/files/hooks/useSetSelectedFileData';
 import MonacoEditor from '@monaco-editor/react';
+import DownloadJsonButton from 'features/files/components/DownloadJsonButton';
 
-const Files: React.FC = () => {
+const Editor: React.FC = () => {
   // This would be a name of authenticated user
   const [userName, setUserName] = useState(
     Math.random().toString(36).substr(2, 9)
@@ -93,6 +94,13 @@ const Files: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
+      <div>
+        <DownloadJsonButton
+          data={selectedFile?.data ?? ''}
+          fileName='testData.json'
+          enabled={selectedFile !== undefined}
+        />
+      </div>
       <div style={{ margin: '20px 0' }}>
         <p style={{ fontWeight: 'bold' }}>
           {selectedFile
@@ -158,4 +166,4 @@ const Files: React.FC = () => {
   );
 };
 
-export default Files;
+export default Editor;
