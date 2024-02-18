@@ -12,6 +12,7 @@ import DownloadJsonButton from 'features/files/components/DownloadJsonButton';
 
 const Editor: React.FC = () => {
   // This would be a name of authenticated user
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userName, setUserName] = useState(
     Math.random().toString(36).substr(2, 9)
   );
