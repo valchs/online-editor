@@ -20,7 +20,7 @@ const Editor: React.FC = () => {
   const [connection, setConnection] = useState<HubConnection | null>(null);
 
   const { selectedFile, setSelectedFileData } = useSetSelectedFileData();
-  const { getFiles, files } = useGetFiles();
+  const { getFiles, files, isLoading } = useGetFiles();
   const { getFileByName, resetSelectedFile } = useGetFileByName();
 
   useEffect(() => {
@@ -95,6 +95,7 @@ const Editor: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
+      {isLoading && <p>Loading files...</p>}
       <div>
         <DownloadJsonButton
           data={selectedFile?.data ?? ''}

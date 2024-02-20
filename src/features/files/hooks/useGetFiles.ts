@@ -4,7 +4,7 @@ import { useCallback } from 'react';
 
 const useGetFiles = () => {
   const dispatch = useAppDispatch();
-  const { files } = useAppSelector(state => state.files);
+  const { files, isLoading } = useAppSelector(state => state.files);
 
   const getFiles = useCallback(async () => {
     try {
@@ -14,7 +14,7 @@ const useGetFiles = () => {
     }
   }, [dispatch]);
 
-  return { getFiles, files };
+  return { getFiles, files, isLoading };
 };
 
 export default useGetFiles;
