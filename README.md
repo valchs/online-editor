@@ -2,8 +2,9 @@
 ### Live demo
 [DEMO](https://nice-sea-0e687dd03.4.azurestaticapps.net/)
 ### To run locally:
-- Clone repository
 - Clone and run the [backend](https://github.com/valchs/online-editor-api)
+- Clone repository
+- Adjust `.env.development` to point to the correct backend URL
 - run `npm install` then `npm start`
 
 ### Notes
