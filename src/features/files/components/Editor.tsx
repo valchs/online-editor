@@ -95,7 +95,15 @@ const Editor: React.FC = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      {isLoading && <p>Loading files...</p>}
+      <p
+        style={{
+          visibility: isLoading ? 'visible' : 'hidden',
+          height: '1em',
+          margin: '20px',
+        }}
+      >
+        {isLoading ? 'Loading files...' : 'Placeholder'}
+      </p>
       <div>
         <DownloadJsonButton
           data={selectedFile?.data ?? ''}
